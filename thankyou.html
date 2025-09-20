@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .thankyou-container {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            animation: fadeIn 0.8s ease;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        /* Success Icon */
+        .success-icon {
+            font-size: 60px;
+            color: limegreen;
+            margin-bottom: 20px;
+            animation: pop 0.5s ease;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #ff2a2a;
+        }
+
+        p {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: red;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: darkred;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="thankyou-container">
+        <div class="success-icon">✔</div>
+        <h1>Thank You!</h1>
+        <p>Your details have been submitted successfully.<br>
+            Our team will contact you shortly.</p>
+        <a href="index.html" class="btn">Go Back to Home</a>
+    </div>
+</body>
+
+</html>

@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Gym Template">
+    <meta name="description" content="Gym ">
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Synergy Fitness </title>
+    <title>Synergy Fitness</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -27,9 +27,163 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!-- bootstrap  -->
-
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
+        /* Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            /* hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* Popup Box */
+        .popup-content {
+            background: #111;
+            padding: 25px;
+            border-radius: 12px;
+            width: 450px;
+            max-width: 95%;
+            color: white;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+            animation: popupFade 0.5s ease;
+        }
+
+        @keyframes popupFade {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Heading + Google Rating */
+        .popup-header {
+
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .popup-header h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .google-rating {
+            max-width: 120px;
+            height: auto;
+        }
+
+        /* Branch Options */
+        .branch-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Hide the default radio */
+        .branch-card input[type="radio"] {
+            display: none;
+        }
+
+        /* Card style */
+        .branch-card {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        /* Text inside */
+        .branch-card span {
+            flex: 1;
+        }
+
+        /* Hover effect */
+        .branch-card:hover {
+            border-color: red;
+            background: #222;
+            transform: scale(1.02);
+        }
+
+        /* Selected effect */
+        .branch-card input[type="radio"]:checked+span {
+            color: #fff;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .branch-card input[type="radio"]:checked+span::before {
+            content: "✔";
+            color: #0f0;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+
+        /* Inputs */
+        #contact-form input {
+            width: 100%;
+            margin-bottom: 12px;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            background: #222;
+            color: white;
+        }
+
+        #contact-form input::placeholder {
+            color: #bbb;
+        }
+
+        /* Submit Button */
+        #contact-form button {
+            width: 100%;
+            padding: 12px;
+            background: red;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #contact-form button:hover {
+            background: darkred;
+        }
+
         .testimonial-img {
 
             width: 80px;
@@ -153,6 +307,48 @@
         </div>
     </section>
     <!-- Hero Section End -->
+
+    <!-- Popup Modal -->
+    <div id="popup-form" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <div class="popup-header">
+                <img src="Google Review.png" alt="Google Rating" class="google-rating">
+                <h3 class="text-white">Select your interested branch</h3>
+            </div>
+            <form id="contact-form">
+                <div class="branch-options">
+                    <label class="branch-card">
+                        <input type="radio" name="branch" value="Sadar Chhaoni Branch" required>
+                        <span>Sadar Chhaoni Branch</span>
+                    </label>
+
+                    <label class="branch-card">
+                        <input type="radio" name="branch" value="South Nagpur Ayodhya Branch" required>
+                        <span>South Nagpur Ayodhya Branch</span>
+                    </label>
+
+                    <label class="branch-card">
+                        <input type="radio" name="branch" value="RamdasPeth Branch" required>
+                        <span>RamdasPeth Branch</span>
+                    </label>
+                </div>
+
+
+                <input type="text" id="name" placeholder="Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="text" id="contact" placeholder="Contact number" required>
+                <input type="text" id="city" placeholder="City" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
 
     <!-- ChoseUs Section Begin -->
     <section class="choseus-section spad" id="about-us">
@@ -481,7 +677,7 @@
             <div class=" row">
                 <div class="col-lg-12 text-center">
                     <div class="copyright-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p><!-- Link back to Colorlib can't be removed.  is licensed under CC BY 3.0. -->
                             Copyright &copy;
                             <script>document.write(new Date().getFullYear());</script> All rights reserved
                         </p>
@@ -502,6 +698,23 @@
         </div>
     </div>
     <!-- Search model end -->
+
+    <!-- JS -->
+    <script>
+        // Show popup after 5 seconds
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                document.getElementById("popup-form").style.display = "flex";
+            }, 2000);
+        });
+
+        // Close function
+        function closePopup() {
+            document.getElementById("popup-form").style.display = "none";
+        }
+    </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -512,7 +725,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-
+    <script src="email.js"></script>
 
 
 </body>
